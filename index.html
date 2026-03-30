@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Lobalada 2026 - Circo</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Fredoka+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E63B2E;
+    --yellow: #F5C518;
+    --blue: #1B5FA8;
+    --cream: #FFF8E7;
+    --dark: #1a1a2e;
+    --stripe-red: #D42B1E;
+    --stripe-white: #FFF0D6;
+    --gold: #D4A017;
+    --green: #2E8B57;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Fundo com listras de circo */
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Bandeirinhas no topo */
+  .bunting {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    background: linear-gradient(135deg, var(--red) 25%, var(--yellow) 25%, var(--yellow) 50%, var(--blue) 50%, var(--blue) 75%, var(--red) 75%);
+    background-size: 60px 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 4px;
+  }
+
+  .bunting::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 20px, var(--yellow) 20px, var(--yellow) 40px, var(--blue) 40px, var(--blue) 60px);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(180deg, #1a1a2e 0%, #2d1b69 50%, #1a1a2e 100%);
+    padding: 18px 30px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 4px;
+    opacity: 0.8;
+  }
+
+  .header::after {
+    content: '★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★';
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 4px;
+    opacity: 0.8;
+  }
+
+  .header-title {
+    text-align: left;
+  }
+
+  .header-title .menu-label {
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px;
+    color: var(--yellow);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .header-title h1 {
+    font-family: 'Boogaloo', cursive;
+    font-size: 52px;
+    color: white;
+    line-height: 1;
+    text-shadow: 3px 3px 0 var(--red), -1px -1px 0 var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .header-title h1 span {
+    color: var(--yellow);
+    text-shadow: 3px 3px 0 #a0700a, -1px -1px 0 white;
+  }
+
+  .header-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .circus-tent-emoji {
+    font-size: 64px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .logo-badge {
+    background: linear-gradient(135deg, var(--gold), #f0d060);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 14px;
+    color: var(--dark);
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+  }
+
+  /* Divisor de estrelas */
+  .star-divider {
+    background: var(--red);
+    padding: 6px 0;
+    text-align: center;
+    font-size: 14px;
+    color: var(--yellow);
+    letter-spacing: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .star-divider::before,
+  .star-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+  }
+  .star-divider::before { left: 0; background: linear-gradient(90deg, var(--dark), transparent); }
+  .star-divider::after { right: 0; background: linear-gradient(-90deg, var(--dark), transparent); }
+
+  /* Conteúdo principal */
+  .content {
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  /* Card de seção */
+  .section-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  .section-header {
+    padding: 10px 16px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+  }
+
+  .section-header::before,
+  .section-header::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    opacity: 0.7;
+  }
+  .section-header::before { left: 12px; }
+  .section-header::after { right: 12px; }
+
+  /* SALGADOS */
+  .salgados {
+    grid-column: 1 / 3;
+    background: white;
+    border: 3px solid var(--red);
+  }
+
+  .salgados .section-header {
+    background: linear-gradient(135deg, var(--red), #c0392b);
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  }
+
+  .salgados .section-body {
+    display: flex;
+    gap: 0;
+  }
+
+  .salgados-illustration {
+    width: 160px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff0f0, #ffe5e5);
+    font-size: 80px;
+    padding: 16px;
+    position: relative;
+  }
+
+  .salgados-illustration::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 3px;
+    background: repeating-linear-gradient(180deg, var(--red) 0px, var(--red) 8px, transparent 8px, transparent 16px);
+  }
+
+  .items-list {
+    flex: 1;
+    padding: 14px 16px;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+    gap: 8px;
+  }
+
+  .menu-item:last-child { border-bottom: none; }
+
+  .item-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .item-name {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .item-name::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px dotted rgba(0,0,0,0.15);
+    margin: 0 6px;
+  }
+
+  .item-price {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--red);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* DOCES */
+  .doces {
+    background: white;
+    border: 3px solid #e91e8c;
+  }
+
+  .doces .section-header {
+    background: linear-gradient(135deg, #e91e8c, #c0155e);
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  }
+
+  .doces .item-price { color: #e91e8c; }
+
+  .section-illustration {
+    padding: 14px;
+    text-align: center;
+    font-size: 60px;
+    background: linear-gradient(135deg, #fff0f8, #ffe0f0);
+  }
+
+  .section-body-simple {
+    padding: 10px 14px 14px;
+  }
+
+  /* BEBIDAS */
+  .bebidas {
+    background: white;
+    border: 3px solid var(--blue);
+  }
+
+  .bebidas .section-header {
+    background: linear-gradient(135deg, var(--blue), #0d47a1);
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  }
+
+  .bebidas .item-price { color: var(--blue); }
+
+  .bebidas .section-illustration {
+    background: linear-gradient(135deg, #e8f0ff, #d0e4ff);
+  }
+
+  /* BRINCADEIRAS */
+  .brincadeiras {
+    background: white;
+    border: 3px solid var(--green);
+    grid-column: 1 / 3;
+  }
+
+  .brincadeiras .section-header {
+    background: linear-gradient(135deg, var(--green), #1a6b3c);
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  }
+
+  .brincadeiras .item-price { color: var(--green); }
+
+  .brincadeiras .section-body {
+    display: flex;
+  }
+
+  .brincadeiras-illustration {
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #efffef, #d8f5d8);
+    font-size: 72px;
+    position: relative;
+  }
+
+  .brincadeiras-illustration::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 3px;
+    background: repeating-linear-gradient(180deg, var(--green) 0px, var(--green) 8px, transparent 8px, transparent 16px);
+  }
+
+  .brincadeiras-items {
+    flex: 1;
+    padding: 10px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+    align-content: center;
+  }
+
+  .brincadeiras-items .menu-item {
+    width: calc(50% - 12px);
+  }
+
+  /* Preço destaque */
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #fff3cd, #ffe082);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    color: var(--dark);
+    margin-top: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .price-badge-icon { font-size: 16px; }
+
+  /* Footer */
+  .footer {
+    background: linear-gradient(180deg, #1a1a2e, #2d1b69);
+    padding: 14px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: '🎪 🎭 🎠 🤹 🎪 🎭 🎠 🤹 🎪 🎭 🎠 🤹 🎪';
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    letter-spacing: 4px;
+  }
+
+  .footer-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  .footer-text span {
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+  }
+
+  /* Decorações de circo nos cantos */
+  .corner-deco {
+    position: absolute;
+    font-size: 28px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .corner-tl { top: 80px; left: 10px; transform: rotate(-20deg); }
+  .corner-tr { top: 80px; right: 10px; transform: rotate(20deg); }
+
+  /* Listras decorativas laterais */
+  .side-stripe-left,
+  .side-stripe-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 12px;
+    background: repeating-linear-gradient(180deg,
+      var(--red) 0px, var(--red) 20px,
+      var(--yellow) 20px, var(--yellow) 40px,
+      var(--blue) 40px, var(--blue) 60px
+    );
+    opacity: 0.4;
+  }
+  .side-stripe-left { left: 0; }
+  .side-stripe-right { right: 0; }
+
+  /* Preço único para seção sem itens individuais */
+  .single-price-section .items-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .items-no-price .menu-item {
+    justify-content: flex-start;
+  }
+
+  .items-no-price .item-name::after { display: none; }
+
+  .year-badge {
+    background: linear-gradient(135deg, var(--gold), #f0d060);
+    color: var(--dark);
+    font-family: 'Fredoka One', cursive;
+    font-size: 22px;
+    padding: 2px 16px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: 4px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="side-stripe-left"></div>
+  <div class="side-stripe-right"></div>
+
+  <!-- Topo colorido -->
+  <div class="bunting"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">
+      <span class="menu-label">🎪 Grande Espetáculo 🎪</span>
+      <h1>MENU<br><span>LOBALADA</span></h1>
+      <div class="header-subtitle">Ramo Lobinho • Grupo Escoteiro Jean Philippe Cousteau</div>
+    </div>
+    <div class="logo-area">
+      <div class="circus-tent-emoji">🎪</div>
+      <div class="year-badge">2026</div>
+    </div>
+  </div>
+
+  <!-- Divisor -->
+  <div class="star-divider">★ &nbsp; ✦ &nbsp; 🤹 &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; 🎭 &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; 🎠 &nbsp; ✦ &nbsp; ★</div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+
+    <!-- SALGADOS -->
+    <div class="section-card salgados">
+      <div class="section-header">🍢 Salgados 🍢</div>
+      <div class="section-body">
+        <div class="salgados-illustration">🎩</div>
+        <div class="items-list">
+          <div class="menu-item">
+            <span class="item-icon">🔴</span>
+            <span class="item-name">Espetinho (carne, frango, linguiça)</span>
+            <span class="item-price">R$ 8,00</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-icon">🟠</span>
+            <span class="item-name">Mini Pizza (mussarela, calabresa)</span>
+            <span class="item-price">R$ 8,00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCES -->
+    <div class="section-card doces">
+      <div class="section-header">🍭 Doces 🍭</div>
+      <div class="section-illustration">🍬</div>
+      <div class="section-body-simple items-no-price">
+        <div class="menu-item">
+          <span class="item-icon">🎂</span>
+          <span class="item-name">Bolos</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-icon">🩷</span>
+          <span class="item-name">Algodão doce</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-icon">✨</span>
+          <span class="item-name">Outros...</span>
+        </div>
+        <div class="price-badge">
+          <span class="price-badge-icon">💰</span>
+          R$ 4,00
+        </div>
+      </div>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="section-card bebidas">
+      <div class="section-header">🥤 Bebidas 🥤</div>
+      <div class="section-illustration">🎡</div>
+      <div class="section-body-simple items-no-price">
+        <div class="menu-item">
+          <span class="item-icon">🥤</span>
+          <span class="item-name">Refrigerante</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-icon">🍊</span>
+          <span class="item-name">Suco</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-icon">💧</span>
+          <span class="item-name">Água</span>
+        </div>
+        <div class="price-badge">
+          <span class="price-badge-icon">💰</span>
+          R$ 3,00
+        </div>
+      </div>
+    </div>
+
+    <!-- BRINCADEIRAS -->
+    <div class="section-card brincadeiras">
+      <div class="section-header">🎠 Brincadeiras 🎠</div>
+      <div class="section-body">
+        <div class="brincadeiras-illustration">🤹</div>
+        <div class="brincadeiras-items items-no-price">
+          <div class="menu-item">
+            <span class="item-icon">🍎</span>
+            <span class="item-name">Jogo Frutas</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-icon">🎣</span>
+            <span class="item-name">Pescaria</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-icon">🎭</span>
+            <span class="item-name">Outros...</span>
+          </div>
+          <div class="menu-item" style="width:100%">
+            <div class="price-badge">
+              <span class="price-badge-icon">💰</span>
+              R$ 3,00
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-text">
+      <span>Grupo Escoteiro Jean Philippe Cousteau</span><br>
+      🌟 &nbsp; Ramo Lobinho — Evento Lobalada 2026 &nbsp; 🌟
+    </div>
+  </div>
+</div>
+</body>
+</html>
