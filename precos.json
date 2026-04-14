@@ -1,0 +1,28 @@
+{
+  "salgados": [
+    { "icone": "🔴", "nome": "Espetinho (carne, frango, linguiça)", "preco": "R$ 8,00" },
+    { "icone": "🟠", "nome": "Mini Pizza (mussarela, calabresa)",    "preco": "R$ 8,00" }
+  ],
+  "bebidas": [
+    { "icone": "🥤", "nome": "Refrigerante", "preco": "R$ 3,00" },
+    { "icone": "🍊", "nome": "Suco",         "preco": "R$ 5,00" },
+    { "icone": "💧", "nome": "Água",         "preco": "R$ 3,00" }
+  ],
+  "doces": [
+    { "icone": "🎂", "nome": "Bolo Especial", "preco": "R$ 6,00" },
+    { "icone": "🍰", "nome": "Bolo Simples",  "preco": "R$ 3,00" },
+    { "icone": "🥧", "nome": "Torta",         "preco": "R$ 5,00" },
+    { "icone": "🍮", "nome": "Pudim",         "preco": "R$ 5,00" },
+    { "icone": "🩷", "nome": "Algodão doce",  "preco": "R$ 3,00" }
+  ],
+  "brincadeiras": [
+    { "icone": "🎣", "nome": "Pescaria"        },
+    { "icone": "🤡", "nome": "Boca do Palhaço" }
+  ],
+  "brincadeiras_preco_unico": "R$ 3,00",
+  "bingo": [
+    { "icone": "⚪", "nome": "1x Cartela Rodada Normal",    "preco": "R$ 2,00" },
+    { "icone": "🎉", "nome": "3x Cartelas Rodada Normal", "preco": "R$ 5,00" },
+    { "icone": "🟡", "nome": "1x Cartela Rodada Especial",  "preco": "R$ 5,00" }
+  ]
+}
