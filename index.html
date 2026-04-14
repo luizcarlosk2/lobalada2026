@@ -350,7 +350,55 @@ body {
 .side-stripe-left { left: 0; }
 .side-stripe-right { right: 0; }
 
-@media print { body { margin: 0; } .page { width: 794px; } }
+@media print {
+  body { margin: 0; }
+  .page { width: 794px; }
+  .btn-pdf { display: none !important; }
+}
+
+.btn-pdf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px auto;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #1a1a2e, #2d1b69);
+  color: var(--gold);
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border: 2px solid var(--gold);
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-decoration: none;
+  width: 260px;
+  transition: transform 0.1s;
+}
+.btn-pdf:active { transform: scale(0.97); }
+
+.btn-wpp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 16px;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-decoration: none;
+  width: 260px;
+  transition: transform 0.1s;
+}
+.btn-wpp:active { transform: scale(0.97); }
 
 @media screen and (max-width: 820px) {
   .page { width: 100%; }
@@ -477,6 +525,11 @@ body {
 
   </div>
 
+  <div style="text-align:center;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:0 16px;">
+    <button class="btn-pdf" onclick="window.print()">🖨️ Exportar PDF</button>
+    <button class="btn-wpp" onclick="compartilharWpp()">📲 Compartilhar no WhatsApp</button>
+  </div>
+
   <div class="footer">
     <div class="footer-text">
       <span>Grupo Escoteiro Jean Philippe Cousteau</span><br>
@@ -487,6 +540,12 @@ body {
 </div>
 
 <script>
+  function compartilharWpp() {
+    const url = encodeURIComponent(window.location.href);
+    const texto = encodeURIComponent('🎪 Confira o Menu da Lobalada 2026! ');
+    window.open(`https://wa.me/?text=${texto}${url}`, '_blank');
+  }
+
   function itemHtml(icone, nome, preco, tamanhoPreco = '24px') {
     return `
       <div class="menu-item">
