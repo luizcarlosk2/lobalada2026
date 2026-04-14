@@ -1,0 +1,17 @@
+secao,icone,nome,preco
+salgados,🔴,Espetinho (carne frango linguiça),R$ 8,00
+salgados,🟠,Mini Pizza (mussarela calabresa),R$ 8,00
+bebidas,🥤,Refrigerante,R$ 3,00
+bebidas,🍊,Suco,R$ 5,00
+bebidas,💧,Água,R$ 3,00
+doces,🎂,Bolo Especial,R$ 6,00
+doces,🍰,Bolo Simples,R$ 3,00
+doces,🥧,Torta,R$ 5,00
+doces,🍮,Pudim,R$ 5,00
+doces,🩷,Algodão doce,R$ 3,00
+brincadeiras,🎣,Pescaria,R$ 3,00
+brincadeiras,🤡,Boca do Palhaço,R$ 3,00
+bingo,⚪,Rodada Normal,R$ 2,00
+bingo,🎉,3x Rodada Normal,R$ 5,00
+bingo,🟡,Rodada Especial,R$ 5,00
+versao,,,1.0.0

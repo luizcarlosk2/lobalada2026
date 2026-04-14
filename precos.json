@@ -1,4 +1,4 @@
-{
+{ "versao": "0.1.0",
   "salgados": [
     { "icone": "🔴", "nome": "Espetinho (carne, frango, linguiça)", "preco": "R$ 8,00" },
     { "icone": "🟠", "nome": "Mini Pizza (mussarela, calabresa)",    "preco": "R$ 8,00" }

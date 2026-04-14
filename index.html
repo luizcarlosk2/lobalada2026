@@ -425,7 +425,8 @@ body {
   <div class="footer">
     <div class="footer-text">
       <span>Grupo Escoteiro Jean Philippe Cousteau</span><br>
-      🌟 &nbsp; Ramo Lobinho — Evento Lobalada 2026 &nbsp; 🌟
+      🌟 &nbsp; Ramo Lobinho — Evento Lobalada 2026 &nbsp; 🌟<br>
+      <span id="versao-menu" style="font-size:10px;opacity:0.6;letter-spacing:1px;"></span>
     </div>
   </div>
 </div>
@@ -440,9 +441,23 @@ body {
       </div>`;
   }
 
-  fetch('precos.json')
-    .then(r => r.json())
-    .then(data => {
+  const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKA_ZiwZHFY6rqrONsMyB4iIw2O6lp0B4bRmN5Os9a8osIefdZzsKPVWk7TfMk-8GSOGD7kyzqy7sD/pub?output=csv';
+
+  function parseCSV(text) {
+    const lines = text.trim().split('\n').slice(1); // remove cabeçalho
+    const data = { salgados: [], bebidas: [], doces: [], brincadeiras: [], bingo: [], versao: null };
+    lines.forEach(line => {
+      const [secao, icone, nome, preco] = line.split(',').map(v => v.trim());
+      if (secao === 'versao') { data.versao = preco; return; }
+      if (data[secao]) data[secao].push({ icone, nome, preco });
+    });
+    return data;
+  }
+
+  fetch(CSV_URL)
+    .then(r => r.text())
+    .then(text => {
+      const data = parseCSV(text);
 
       // Salgados
       document.getElementById('lista-salgados').innerHTML =
@@ -456,21 +471,25 @@ body {
       document.getElementById('lista-doces').innerHTML =
         data.doces.map(i => itemHtml(i.icone, i.nome, i.preco)).join('');
 
-      // Brincadeiras
+      // Brincadeiras — preço único = primeiro preco encontrado
+      const precoUnico = data.brincadeiras[0]?.preco || '';
       const brincHtml = data.brincadeiras.map(i => itemHtml(i.icone, i.nome, null)).join('');
-      const precoUnico = `
+      document.getElementById('lista-brincadeiras').innerHTML = brincHtml + `
         <div class="menu-item" style="width:100%">
-          <div class="price-badge">💰 ${data.brincadeiras_preco_unico}</div>
+          <div class="price-badge">💰 ${precoUnico}</div>
         </div>`;
-      document.getElementById('lista-brincadeiras').innerHTML = brincHtml + precoUnico;
 
       // Bingo
       document.getElementById('lista-bingo').innerHTML =
         data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco)).join('');
 
+      // Versão
+      if (data.versao) {
+        document.getElementById('versao-menu').textContent = `v${data.versao}`;
+      }
     })
     .catch(() => {
-      document.body.innerHTML = '<p style="color:red;padding:20px;font-size:18px;">❌ Erro ao carregar precos.json. Verifique se o arquivo existe no mesmo diretório.</p>';
+      document.body.innerHTML = '<p style="color:red;padding:20px;font-size:18px;">❌ Erro ao carregar dados do Google Sheets. Verifique se a planilha está publicada.</p>';
     });
 </script>
 </body>
