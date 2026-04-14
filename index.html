@@ -352,6 +352,7 @@ body {
 
 @media print { body { margin: 0; } .page { width: 794px; } }
 </style>
+<script src="config.js"></script>
 </head>
 <body>
 <div class="page">
@@ -441,13 +442,27 @@ body {
       </div>`;
   }
 
-  const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKA_ZiwZHFY6rqrONsMyB4iIw2O6lp0B4bRmN5Os9a8osIefdZzsKPVWk7TfMk-8GSOGD7kyzqy7sD/pub?output=csv';
+  const CSV_URL = CONFIG.fonte === 'local' ? CONFIG.csv_local : CONFIG.csv_google;
+
+  function parseCSVLine(line) {
+    const result = [];
+    let cur = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') { inQuotes = !inQuotes; }
+      else if (ch === ',' && !inQuotes) { result.push(cur.trim()); cur = ''; }
+      else { cur += ch; }
+    }
+    result.push(cur.trim());
+    return result;
+  }
 
   function parseCSV(text) {
     const lines = text.trim().split('\n').slice(1); // remove cabeçalho
     const data = { salgados: [], bebidas: [], doces: [], brincadeiras: [], bingo: [], versao: null };
     lines.forEach(line => {
-      const [secao, icone, nome, preco] = line.split(',').map(v => v.trim());
+      const [secao, icone, nome, preco] = parseCSVLine(line);
       if (secao === 'versao') { data.versao = preco; return; }
       if (data[secao]) data[secao].push({ icone, nome, preco });
     });
@@ -483,9 +498,10 @@ body {
       document.getElementById('lista-bingo').innerHTML =
         data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco)).join('');
 
-      // Versão
+      // Versão e fonte
       if (data.versao) {
-        document.getElementById('versao-menu').textContent = `v${data.versao}`;
+        const fonte = CONFIG.fonte === 'local' ? '📄 local' : '☁️ google sheets';
+        document.getElementById('versao-menu').textContent = `v${data.versao} · ${fonte}`;
       }
     })
     .catch(() => {
