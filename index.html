@@ -467,7 +467,7 @@ body {
 
   <div class="header">
     <div style="display:flex;align-items:center;gap:14px;">
-      <img src="escudo.png" style="height:120px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5));" alt="Escudo">
+      <canvas id="canvas-logos" style="height:84px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5));"></canvas>
       <div class="header-title">
         <span class="menu-label">🎪 Grande Espetáculo 🎪</span>
         <h1>MENU<br><span>LOBALADA</span></h1>
@@ -475,7 +475,6 @@ body {
       </div>
     </div>
     <div class="logo-area">
-      <img src="lobinho.png" style="height:90px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5));" alt="Lobinho">
       <div class="year-badge">2026</div>
     </div>
   </div>
@@ -547,6 +546,31 @@ body {
 </div>
 
 <script>
+  // Junta escudo + lobinho no canvas
+  window.addEventListener('load', () => {
+    const canvas = document.getElementById('canvas-logos');
+    const escudo = new Image();
+    const lobinho = new Image();
+    let loaded = 0;
+    const altura = 84;
+
+    function desenhar() {
+      const largura = escudo.naturalWidth * (altura / escudo.naturalHeight) +
+                      lobinho.naturalWidth * (altura / lobinho.naturalHeight) + 10;
+      canvas.width  = largura;
+      canvas.height = altura;
+      const ctx = canvas.getContext('2d');
+      const wEscudo = escudo.naturalWidth * (altura / escudo.naturalHeight);
+      ctx.drawImage(escudo,  0,         0, wEscudo, altura);
+      ctx.drawImage(lobinho, wEscudo + 10, 0, largura - wEscudo - 10, altura);
+    }
+
+    escudo.onload  = () => { if (++loaded === 2) desenhar(); };
+    lobinho.onload = () => { if (++loaded === 2) desenhar(); };
+    escudo.src  = 'escudo.png';
+    lobinho.src = 'lobinho.png';
+  });
+
   function compartilharWpp() {
     const url = encodeURIComponent(window.location.href);
     const texto = encodeURIComponent('🎪 Confira o Menu da Lobalada 2026! ');
