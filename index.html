@@ -108,7 +108,7 @@ body {
   color: white;
   line-height: 1;
   text-shadow: 3px 3px 0 var(--red), -1px -1px 0 var(--gold);
-  letter-spacing: 2px;
+  letter-spacing: 6px;
 }
 
 .header-title h1 span {
@@ -322,7 +322,7 @@ body {
   overflow: hidden;
 }
 .footer::before {
-  content: '🎪 🎭 🤡 🎠 🤹 🎪 🎭 🤡 🎠 🤹 🎪 🎭 🤡 🎠 🤹 🎪 🎭 🤡 🎠 🤹 🎪';
+  content: '🎪 🎭 🎠 🤹 🎪 🎭 🎠 🤹 🎪 🎭 🎠 🤹 🎪';
   display: block;
   font-size: 16px;
   margin-bottom: 8px;
@@ -354,8 +354,106 @@ body {
 @media print {
   body { margin: 0; }
   .page { width: 794px; }
-  .btn-pdf { display: none !important; }
+  .legenda-fichas {
+  grid-column: 1 / 3;
+  background: white;
+  border: 3px solid var(--gold);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.legenda-fichas .section-header {
+  background: linear-gradient(135deg, var(--gold), #f0d060);
+  color: var(--dark);
+  font-family: 'Fredoka One', cursive;
+  font-size: 28px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px 16px;
+}
+.fichas-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+}
+.ficha-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.ficha-emoji { font-size: 42px; }
+.ficha-preco {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  color: var(--dark);
+  background: linear-gradient(135deg, #fff3cd, #ffe082);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 2px 10px;
+}
+.ficha-nome {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+  opacity: 0.7;
+}
+
+.btn-pdf { display: none !important; }
   .btn-wpp { display: none !important; }
+}
+
+.legenda-fichas {
+  grid-column: 1 / 3;
+  background: white;
+  border: 3px solid var(--gold);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.legenda-fichas .section-header {
+  background: linear-gradient(135deg, var(--gold), #f0d060);
+  color: var(--dark);
+  font-family: 'Fredoka One', cursive;
+  font-size: 28px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px 16px;
+}
+.fichas-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+}
+.ficha-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.ficha-emoji { font-size: 42px; }
+.ficha-preco {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  color: var(--dark);
+  background: linear-gradient(135deg, #fff3cd, #ffe082);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 2px 10px;
+}
+.ficha-nome {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+  opacity: 0.7;
 }
 
 .btn-pdf {
@@ -478,13 +576,18 @@ body {
     </div>
     <div class="logo-area">
       <div class="year-badge">GE JPC • 173/SP</div>
-    </br>
     </div>
   </div>
 
-  <div class="star-divider">★ &nbsp; ✦ &nbsp; 🤹 &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; 🎭 &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; 🎠 &nbsp; ✦ &nbsp; ✦</div>
+  <div class="star-divider">★ &nbsp; ✦ &nbsp; 🤹 &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; 🎭 &nbsp; ✦ &nbsp; ★ &nbsp; ✦ &nbsp; 🎠 &nbsp; ✦ &nbsp; ★</div>
 
   <div class="content">
+
+    <!-- VALORES / FICHAS -->
+    <div class="section-card legenda-fichas" id="card-valores" style="display:none;">
+      <div class="section-header">🎟️ Tabela de Fichas 🎟️</div>
+      <div class="fichas-lista" id="lista-valores"></div>
+    </div>
 
     <!-- SALGADOS -->
     <div class="section-card salgados">
@@ -536,13 +639,13 @@ body {
 
   <div style="text-align:center;padding:16px 0 8px;">
     <p style="font-family:'Fredoka One',cursive;font-size:14px;color:var(--dark);letter-spacing:2px;opacity:0.6;margin-bottom:8px;">ACESSE O MENU PELO QR CODE</p>
-    <img src="qr-code.png" alt="QR Code" style="width:225px;height:280px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+    <img src="qr-code.png" alt="QR Code" style="width:225px;height:225px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
   </div>
 
   <div class="footer">
     <div class="footer-text">
       <span>Grupo Escoteiro Jean Philippe Cousteau</span><br>
-      🌟 &nbsp; Ramo Lobo — Evento Lobalada 2026 &nbsp; 🌟<br>
+      🌟 &nbsp; Ramo Lobinho — Evento Lobalada 2026 &nbsp; 🌟<br>
       <span id="versao-menu" style="font-size:10px;opacity:0.6;letter-spacing:1px;"></span>
     </div>
   </div>
@@ -580,11 +683,13 @@ body {
     window.open(`https://wa.me/?text=${texto}${url}`, '_blank');
   }
 
-  function itemHtml(icone, nome, preco, tamanhoPreco = '24px') {
+  function itemHtml(icone, nome, preco, tamanhoPreco = '24px', disponivel = true) {
+    const estilo = disponivel ? '' : 'opacity:0.5;text-decoration:line-through;';
+    const tag    = disponivel ? '' : '<span style="font-size:12px;color:#c0392b;font-family:Nunito,sans-serif;font-weight:800;margin-left:6px;">ESGOTADO</span>';
     return `
-      <div class="menu-item">
+      <div class="menu-item" style="${estilo}">
         <span class="item-icon">${icone}</span>
-        <span class="item-name">${nome}</span>
+        <span class="item-name">${nome}${tag}</span>
         ${preco ? `<div class="price-badge" style="font-size:${tamanhoPreco}">💰 ${preco}</div>` : ''}
       </div>`;
   }
@@ -607,11 +712,22 @@ body {
 
   function parseCSV(text) {
     const lines = text.trim().split('\n').slice(1); // remove cabeçalho
-    const data = { salgados: [], bebidas: [], doces: [], brincadeiras: [], bingo: [], versao: null };
+    const data = { valores: [], salgados: [], bebidas: [], doces: [], brincadeiras: [], bingo: [], versao: null };
     lines.forEach(line => {
-      const [secao, icone, nome, preco] = parseCSVLine(line);
-      if (secao === 'versao') { data.versao = preco; return; }
-      if (data[secao]) data[secao].push({ icone, nome, preco });
+      const [secao, icone, nome, disponivel, visivel, precoRaw] = parseCSVLine(line);
+      const precoLimpo = precoRaw ? precoRaw.replace(/"+/g, '').trim() : '';
+      const precoNum = parseFloat(precoLimpo.replace('R$', '').replace(',', '.').trim());
+      const preco = !isNaN(precoNum)
+        ? 'R$ ' + precoNum.toFixed(2).replace('.', ',')
+        : precoLimpo;
+      if (secao === 'versao') { data.versao = nome || disponivel || visivel || preco; return; }
+      const vNorm = (visivel || '').trim().toLowerCase();
+      const dNorm = (disponivel || '').trim().toLowerCase();
+      const isVisivel    = vNorm !== 'false' && vNorm !== '0';
+      const isDisponivel = dNorm !== 'false' && dNorm !== '0';
+      if (data[secao] && isVisivel) {
+        data[secao].push({ icone, nome, preco, disponivel: isDisponivel });
+      }
     });
     return data;
   }
@@ -621,21 +737,33 @@ body {
     .then(text => {
       const data = parseCSV(text);
 
+      // Valores / Fichas
+      if (data.valores.length > 0) {
+        document.getElementById('card-valores').style.display = '';
+        document.getElementById('lista-valores').innerHTML = data.valores
+          .map(i => `
+            <div class="ficha-item">
+              <span class="ficha-emoji">${i.icone}</span>
+              <span class="ficha-nome">${i.nome}</span>
+              <span class="ficha-preco">💰 ${i.preco}</span>
+            </div>`).join('');
+      }
+
       // Salgados
       document.getElementById('lista-salgados').innerHTML =
-        data.salgados.map(i => itemHtml(i.icone, i.nome, i.preco)).join('');
+        data.salgados.map(i => itemHtml(i.icone, i.nome, i.preco, '24px', i.disponivel)).join('');
 
       // Bebidas
       document.getElementById('lista-bebidas').innerHTML =
-        data.bebidas.map(i => itemHtml(i.icone, i.nome, i.preco, '20px')).join('');
+        data.bebidas.map(i => itemHtml(i.icone, i.nome, i.preco, '20px', i.disponivel)).join('');
 
       // Doces
       document.getElementById('lista-doces').innerHTML =
-        data.doces.map(i => itemHtml(i.icone, i.nome, i.preco)).join('');
+        data.doces.map(i => itemHtml(i.icone, i.nome, i.preco, '24px', i.disponivel)).join('');
 
       // Brincadeiras — preço único = primeiro preco encontrado
       const precoUnico = data.brincadeiras[0]?.preco || '';
-      const brincHtml = data.brincadeiras.map(i => itemHtml(i.icone, i.nome, null)).join('');
+      const brincHtml = data.brincadeiras.map(i => itemHtml(i.icone, i.nome, null, '24px', i.disponivel)).join('');
       document.getElementById('lista-brincadeiras').innerHTML = brincHtml + `
         <div class="menu-item" style="width:100%">
           <div class="price-badge">💰 ${precoUnico}</div>
@@ -643,7 +771,7 @@ body {
 
       // Bingo
       document.getElementById('lista-bingo').innerHTML =
-        data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco)).join('');
+        data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco, '24px', i.disponivel)).join('');
 
       // Versão e fonte
       if (data.versao) {
