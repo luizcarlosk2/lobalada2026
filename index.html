@@ -796,10 +796,9 @@ body {
         data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco, '24px', i.disponivel)).join('');
 
       // Versão e fonte
-      if (data.versao) {
-        const fonte = fonteUsada === CONFIG.csv_local ? '📄 local' : '☁️ google sheets';
-        document.getElementById('versao-menu').textContent = `v${data.versao} · ${fonte}`;
-      }
+      const fonte = fonteUsada === CONFIG.csv_local ? 'price source: 📄 local' : 'price source: ☁️ google sheets';
+      document.getElementById('versao-menu').innerHTML =
+        `🖥️ app v${CONFIG.versao_app} &nbsp;|&nbsp; 💰 preços v${data.versao || '?'} &nbsp;|&nbsp; ${fonte}`;
     })
     .catch(() => {
       document.body.innerHTML = '<p style="color:red;padding:20px;font-size:18px;">❌ Erro ao carregar dados do Google Sheets. Verifique se a planilha está publicada.</p>';
