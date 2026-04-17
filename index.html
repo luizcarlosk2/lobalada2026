@@ -735,8 +735,27 @@ body {
     return data;
   }
 
-  fetch(CSV_URL)
-    .then(r => r.text())
+  function carregarCSV(url) {
+    return fetch(url).then(r => {
+      if (!r.ok) throw new Error('falhou');
+      return r.text();
+    });
+  }
+
+  const tentativas = CONFIG.fonte === 'google'
+    ? [CONFIG.csv_google, CONFIG.csv_local]
+    : [CONFIG.csv_local];
+
+  let fonteUsada = tentativas[0];
+
+  carregarCSV(tentativas[0])
+    .catch(() => {
+      if (tentativas[1]) {
+        fonteUsada = tentativas[1];
+        return carregarCSV(tentativas[1]);
+      }
+      return Promise.reject();
+    })
     .then(text => {
       const data = parseCSV(text);
 
@@ -778,7 +797,7 @@ body {
 
       // Versão e fonte
       if (data.versao) {
-        const fonte = CONFIG.fonte === 'local' ? '📄 local' : '☁️ google sheets';
+        const fonte = fonteUsada === CONFIG.csv_local ? '📄 local' : '☁️ google sheets';
         document.getElementById('versao-menu').textContent = `v${data.versao} · ${fonte}`;
       }
     })
