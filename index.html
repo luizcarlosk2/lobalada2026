@@ -796,7 +796,7 @@ body {
         data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco, '24px', i.disponivel)).join('');
 
       // Versão e fonte
-      const fonte = fonteUsada === CONFIG.csv_local ? '📄 local' : '☁️ google sheets';
+      const fonte = fonteUsada === CONFIG.csv_local ? 'price version: 📄 local' : 'price version: ☁️ google sheets';
       document.getElementById('versao-menu').innerHTML =
         `🖥️ app v${CONFIG.versao_app} &nbsp;|&nbsp; 💰 preços v${data.versao || '?'} &nbsp;|&nbsp; ${fonte}`;
     })
