@@ -723,7 +723,7 @@ body {
       const preco = !isNaN(precoNum)
         ? 'R$ ' + precoNum.toFixed(2).replace('.', ',')
         : precoLimpo;
-      if (secao === 'versao') { data.versao = nome || disponivel || visivel || preco; return; }
+      if (secao === 'versao') { data.versao = nome; return; }
       const vNorm = (visivel || '').trim().toLowerCase();
       const dNorm = (disponivel || '').trim().toLowerCase();
       const isVisivel    = vNorm !== 'false' && vNorm !== '0';
@@ -796,7 +796,7 @@ body {
         data.bingo.map(i => itemHtml(i.icone, i.nome, i.preco, '24px', i.disponivel)).join('');
 
       // Versão e fonte
-      const fonte = fonteUsada === CONFIG.csv_local ? 'price source: 📄 local' : 'price source: ☁️ google sheets';
+      const fonte = fonteUsada === CONFIG.csv_local ? '📄 local' : '☁️ google sheets';
       document.getElementById('versao-menu').innerHTML =
         `🖥️ app v${CONFIG.versao_app} &nbsp;|&nbsp; 💰 preços v${data.versao || '?'} &nbsp;|&nbsp; ${fonte}`;
     })
