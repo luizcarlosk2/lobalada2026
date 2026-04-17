@@ -3,7 +3,7 @@ valores,⚪️,Branca,1,1,1
 valores,🔵,Azul,1,1,2
 valores,🟣,Lilás,1,1,5
 valores,🔴,Vermelha,1,1,10
-valores,🟠,Laranja,1,1,30
+valores,🟠,Laranja,1,1,20
 salgados,🍢,Espetinho (carne frango linguiça),0,1,12
 salgados,🍕,Mini Pizza (mussarela calabresa),1,1,12.50
 salgados,🟢,Picanha,1,0,200
@@ -20,7 +20,7 @@ brincadeiras,🤡,Boca do Palhaço,1,1,3
 bingo,⚪,Rodada Normal,1,1,2
 bingo,🎉,3x Rodada Normal,1,1,5
 bingo,🟡,Rodada Especial,1,1,5
-versao,,,,,0.2.0
+versao,,0.1.0,,,
 tempero,🟢,sal,1,1,5
 tempero,🔵,pimenta,1,1,5
 tempero,🟡,curry,1,1,5
