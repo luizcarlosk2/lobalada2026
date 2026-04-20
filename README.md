@@ -1,1 +1,1 @@
-@@ Menu lobalada 2026 - JPC 173
+@@ Menu lobalada 2026 - JPC
