@@ -15,11 +15,11 @@ jobs:
       - name: Deploy via FTP - Loblada
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ vars.FTP_HOST }}
+          username: ${{ vars.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: ${{ vars.FTP_SERVER_DIR }}
           protocol: ftp
           port: 21
           exclude: |
